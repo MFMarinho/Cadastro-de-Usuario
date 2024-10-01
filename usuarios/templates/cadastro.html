@@ -1,16 +1,20 @@
 <html>
 
-
     <head>
-
+        <title>Cadastro de Usuário</title>
     </head>
 
     <body>
 
-        <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
+        <h1>Cadastro de Usuário</h1>
 
+        <form action="{% url 'cadastro' %}" method="POST">{% csrf_token %}
+            
             <input type="text" placeholder="Username..." name="username">
             <br>
+            <input type="tel" placeholder="Telefone (XX) XXXXX-XXXX" name="telefone" 
+                   pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}" 
+                   title="O formato deve ser (XX) XXXXX-XXXX">
             <br>
             <input type="email" placeholder="Email..." name="email">
             <br>
@@ -18,9 +22,9 @@
             <input type="password" placeholder="Senha..." name="senha">
             <br>
             <br>
-            <input type="submit" value="cadastrar">
+            <input type="submit" value="Enviar">
             <br>
-
         </form>
+
     </body>
 </html>

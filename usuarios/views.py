@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
 from django.contrib.auth.decorators import login_required
+from .models import Profile
 
 
 def cadastro(request):
@@ -11,6 +12,7 @@ def cadastro(request):
         return render(request, 'cadastro.html')
     else:
         username = request.POST.get('username')
+        telefone = request.POST.get('telefone')
         email = request.POST.get('email')
         senha = request.POST.get('senha')
 
@@ -21,6 +23,9 @@ def cadastro(request):
         
         user = User.objects.create_user(username=username, email=email, password=senha)
         user.save()
+
+        profile = Profile.objects.create(user=user, telefone=telefone)
+        profile.save()
 
         return HttpResponse('Usuário cadastrado com sucesso!')
 

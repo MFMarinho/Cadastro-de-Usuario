@@ -2,10 +2,12 @@
 
 
     <head>
-
+        <title>Login</title>
     </head>
 
     <body>
+
+        <h1>Login</h1>
 
         <form action="{% url 'login' %}" method="POST">{% csrf_token %}
 
@@ -15,7 +17,7 @@
             <input type="password" placeholder="Senha..." name="senha">
             <br>
             <br>
-            <input type="submit" value="Logar">
+            <input type="submit" value="Entrar">
             <br>
 
         </form>
